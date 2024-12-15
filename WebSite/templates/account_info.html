@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+
+<head>
+    <meta charset = 'UTF-8'>
+    <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
+    <link rel = "stylesheet" href="/static/css/style.css">
+</head>
+
+<body> 
+    <div style="white-space: pre;">
+        
+        <h1>
+            Username: {{data['username']}}
+            <label for = "password_display">Password</label>
+            <input type = "text" id = "password_display" value = {{ data['passowrd'] }} disabled>
+            <button type = "button">Show/Hide </button>
+        </h1>
+        
+        First Name: {{data['first_name']}}
+        Last Name: {{data['last_name']}}
+        Address: {{data['address']}}
+        City/Town: {{data['city_town']}}
+        States/Territories: {{data['states_and_territories']}}
+        Email: {{data['email_address']}}
+        Date of Birth: {{data['date_of_birth']}}
+        Gender: {{data['gender']}}
+        Created Date: {{data['created_date']}}
+    
+    </div>
+</body>
+</html>

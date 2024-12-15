@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+
+<head>
+    <meta charset = 'UTF-8'>
+    <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
+    <link rel = "stylesheet" href="/static/css/style.css">
+</head>
+
+<body style = "background-color: #8dc7fb;">
+        
+    <div class = "container" id = "container">
+    <h1>My Website</h1>
+    <p style = "font-size: 20px;">Login into your account.</p>
+
+    <form action = 'login_info' method = 'POST'>
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" name="username" placeholder="Username" pattern="\S+" title="Spaces are not allowed" required>            
+        <label for="password">Enter your password:</label>
+        <input type = "password" id = "password" name = "password" placeholder= "Password" pattern="\S+" title="Spaces are not allowed" required>  
+        <button type="submit">Submit</button>
+    </form>
+    
+        <div id = "login_failed" style="display: none; color: red; margin-top: 10px; margin-bottom: 10px;">
+            {{ error_message }}
+        </div>
+
+    <a href = "http://127.0.0.1:5000/new_account">Create New Account</a>    
+    
+    </div>
+
+    <script src = "/static/js/errors.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+        var result = {{ response }};
+        if (result){
+            document.getElementById("login_failed").style.display = "block";
+        }
+        });
+    </script>
+</body>
+</html>

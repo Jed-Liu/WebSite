@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+
+<head>
+    <meta charset = 'UTF-8'>
+    <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
+    <link rel = "stylesheet" href="/static/css/style.css">
+</head>
+
+<body style = "background-color: #1cb5b5;">
+    <h1 style = "background-color: #4bdfe2; font-family: 'Courier New', monospace;" > Welcome to your account, {{username}}. <br> Your balance is ${{balance}}.</h1>
+    
+    <form action = 'transfer' method = 'POST' style = "background-color: #39afbf">
+        <label for="username">Who would like to make a transfer to?</label>
+        <input type="text" id="transfer_target" name="transfer_target" placeholder="Transfer target" pattern="\S+" title="Spaces are not allowed" required>            
+        <label for="transfer_amount">How much would like to transfer?</label>
+        <input type="number" style = "width: 165px;" step="0.01" min="50" max = {{balance}} title = "Minium is $50 and Max is ${{balance}}(your balance amount)" id = "transfer_amount" name = "transfer_amount" placeholder = "Transfer amount"  required>
+        <input type="hidden" name="current_user_id" value= "{{user_id}}">   
+        <button type="submit">Submit</button> 
+    </form>    
+    
+
+    <div id = "user_not_found" style="display: none; color: red; margin-top: 10px; margin-bottom: 10px;">
+        Cannot Find This Account
+    </div>
+
+    <form action = 'account_info' method = 'GET' style = "background-color:#1cb5b5;">
+        <button class = "button"  type="submit">My infomration</button> 
+        <input type="hidden" name="current_user_id" value= "{{user_id}}">
+    </form>
+
+    <form action = 'logout' method = 'POST' style = "background-color:#1cb5b5;">
+        <button class = "button"  type="submit">Logout</button> 
+        <input type="hidden" name="current_user_id" value= "{{user_id}}">
+    </form>
+    
+    
+    <div class = "container" id = "second_container" style = "background-color:#39afbf; overflow-y: scroll; border: 1px solid #ccc; ">
+    <h2> Balance History </h2>
+    <table style = "background-color: white;">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Sender</th>
+            <th>Reciever</th>
+        </tr>
+        </thead>
+        
+        <tbody>
+
+        {% for row in transaction_history %}
+        <tr>
+
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+
+        <tr>
+        {% endfor %}
+
+        </tbody>
+    </table>    
+    </div>
+
+    <form action = 'delete_account' method = 'POST' style = "background-color:#1cb5b5;">
+        <button class = "button"  type="submit">Delete Account</button> 
+        <input type="hidden" name="current_user_id" value= "{{user_id}}">
+    </form>
+
+    <script src = "/static/js/errors.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+        var result = {{ transfer_response }};
+        if (result){
+            document.getElementById("user_not_found").style.display = "block";
+        }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+
+body, html {
+    height: 100%; 
+    margin: 0; 
+    display: grid;
+    place-items: center;  
+    text-align: center;
+    font-size: 20px;
+}
+
+table {
+    border-collapse: collapse; /* Merge cell borders for clean look */
+    width: 100%; /* Table spans the width of the page */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Add borders to cells */
+    padding: 8px; /* Add padding for readability */
+    text-align: left; /* Align text to the left */
+}
+th {
+    background-color: #f2f2f2; /* Light background for headers */
+}
+
+form {
+    display: flex;
+    flex-direction: column;  /* Stack form elements vertically */
+    align-items: center;  
+    width: 50%;               /* Set the width of the form */
+    margin: 0 auto;           /* Centers the form horizontally */
+    padding: 20px;
+    background-color: lightblue;
+    border: 0px;
+    
+}
+
+.form-row {
+    display: flex;        /* Enables Flexbox layout */
+    gap: 10px;            /* Adds spacing between the fields */
+    align-items: center;  /* Vertically centers the items (optional) */
+  }
+
+.container {
+    position: relative;
+    background-color: lightblue;
+    padding: 40px;
+    width: 400px;  /* Adjust the container width for a better appearance */
+    border-radius: 10px;  /* Optional: Adds rounded corners to the container */
+    box-shadow: 0 4px 8px #f9bbbb1a; /* Optional: Adds a subtle shadow to the box */
+    
+}
+
+input {
+    place-items: center;  
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 15px;
+    flex: 1;
+}
+
+select {
+    
+    place-items: center;  
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 15px;
+    flex: 1;
+
+}
+
+.error-box {
+    display: none;
+    background-color: #45d2f3;
+    padding: 5px;
+    top: 50%;
+    font-size: 14px;
+    z-index: 1000;
+    position: absolute;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+}
+
+button {
+
+    width: 50%;               /* Set the width of the form */
+    margin: 0 auto;           /* Centers the form horizontally */
+    padding: 10px 15px; 
+    background-color: #007BFF; 
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;    
+}
